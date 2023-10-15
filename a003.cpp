@@ -3,7 +3,7 @@ using namespace std;
 
 int main()
 {
-    int day,month,ans;
+    int day, month, ans;
     cin >> month >> day;
     ans = (month * 2 + day) % 3;
     if (ans == 0)
