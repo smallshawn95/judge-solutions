@@ -1,1 +1,2 @@
-*.cpp filter=big5-utf8
+# 設定檔案過濾器
+*.cpp filter=big5_utf8_conversion
