@@ -7,10 +7,10 @@ int main()
     cin >> month >> day;
     ans = (month * 2 + day) % 3;
     if (ans == 0)
-        cout << "´¶³q";
+        cout << "æ™®é€š";
     else if (ans == 1)
-        cout << "¦N";
+        cout << "å‰";
     else if (ans == 2)
-        cout << "¤j¦N";
+        cout << "å¤§å‰";
     return 0;
 }
