@@ -1,3 +1,10 @@
 {
-    "commentTranslate.targetLanguage": "zh-TW"
+    "files.autoSave": "afterDelay",
+    "explorer.sortOrder": "type",
+    "code-runner.runInTerminal": true,
+    "commentTranslate.targetLanguage": "zh-TW",
+    "[cpp]":{
+        "files.encoding": "cp950",
+        "files.autoGuessEncoding": false
+    }
 }

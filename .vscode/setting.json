@@ -1,8 +1,0 @@
-{
-    "explorer.sortOrder": "type",
-    "files.autoSave": "afterDelay",
-    "[cpp]":{
-        "files.encoding": "cp950",
-        "files.autoGuessEncoding": false
-    }
-}
