@@ -3,14 +3,13 @@
 #include <vector>
 using namespace std;
 
-
 int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
     int a, b, n, m;
     cin >> n >> m;
-    vector<int> dist(n + 1, 0), history(n + 1);
+    vector<int> history(n + 1);
     vector<bool> visited(n + 1, false);
     vector<vector<int>> grid(n + 1);
     for(int i = 0; i < n; i++){
@@ -25,27 +24,29 @@ int main()
     while(!q.empty()){
         x = q.front();
         q.pop();
+        if(visited[n]){
+            break;
+        }
         for(int i: grid[x]){
             if(!visited[i]){
-                dist[i] = dist[x] + 1;
                 q.push(i);
                 history[i] = x;
                 visited[i] = true;
             }
         }
     }
-    if(!visited[m]){
+    if(!visited[n]){
         cout << "IMPOSSIBLE\n";
     }else{
-        x = n;        
-        int k = dist[m];
-        vector<int> ans(k + 1);
-        for(int i = k; i >= 0; i--){
-            ans[i] = x;
-            x = history[x];
+        vector<int> ans;
+        ans.push_back(n);
+        while(history[n] != 1){
+            ans.push_back(history[n]);
+            n = history[n];
         }
-        cout << k + 1 << '\n';
-        for(int i = 0; i <= k; i++){
+        ans.push_back(1);
+        cout << ans.size() << '\n';
+        for(int i = int(ans.size()) - 1; i >= 0; i--){
             cout << ans[i] << ' ';
         }
         cout << '\n';
