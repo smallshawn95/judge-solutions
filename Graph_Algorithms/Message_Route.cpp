@@ -12,7 +12,7 @@ int main()
     vector<int> history(n + 1);
     vector<bool> visited(n + 1, false);
     vector<vector<int>> grid(n + 1);
-    for(int i = 0; i < n; i++){
+    for(int i = 0; i < m; i++){
         cin >> a >> b;
         grid[a].push_back(b);
         grid[b].push_back(a);
