@@ -1,4 +1,5 @@
 #include <iostream>
+#include <map>
 #include <string>
 #include <vector>
 #include <algorithm>
@@ -17,23 +18,37 @@ int main()
         library.push_back({author, title});
     }
     sort(library.begin(), library.end());
-    for(auto i: library){
-        cout << i.second << '\n';
-    }
     int book_num = library.size();
     map<string, int> books;
-    while(cin >> book >> ws){
+    for(int i = 0; i < book_num; i++){
+        books[library[i].second] = i;
+    }
+    vector<bool> borrowed(book_num, false), returned(book_num, false);
+    while(cin >> book >> ws && book != "END"){
+        int previous = -1;
         if(book == "BORROW"){
             getline(cin, book);
-
+            borrowed[books[book]] = true;
+            returned[books[book]] = false;
         }else if(book == "RETURN"){
             getline(cin, book);
-
+            returned[books[book]] = true;
         }else if(book == "SHELVE"){
-
-        }else if(book == "END"){
+            for(int i = 0; i < book_num; i++){
+                if(returned[i]){
+                    if(previous == -1){
+                        cout << "Put " << library[i].second << " first\n";
+                    }else{
+                        cout << "Put " << library[i].second << " after " << library[previous].second << '\n';
+                    }
+                    borrowed[i] = false;
+                    returned[i] = false;
+                    previous = i;
+                }else if(!borrowed[i]){
+                    previous = i;
+                }
+            }
             cout << "END\n";
-            break;
         }
     }
     return 0;
