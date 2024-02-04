@@ -7,8 +7,5 @@
     "[cpp]":{
         "files.encoding": "cp950",
         "files.autoGuessEncoding": false
-    },
-    "files.associations": {
-        "cmath": "cpp"
     }
 }
