@@ -9,69 +9,47 @@ int main()
     int h, w, k;
     cin >> h >> w >> k;
     vector<vector<int>> room(h, vector<int>(w));
-    int old_total = 0;
     for(int i = 0; i < h; i++){
         for(int j = 0; j < w; j++){
             cin >> room[i][j];
-            old_total += room[i][j];
         }
     }
+    int ans = 0;
     while(k--){
-        vector<vector<int>> tomorrow(h, vector<int>(w, 0));
+        vector<vector<int>> temp = room;
         for(int i = 0; i < h; i++){
             for(int j = 0; j < w; j++){
-                int num = room[i][j], x = 0, y = 0, z = 0;
-                if(i - 1 >= 0){
-                    x += 1;
-                    if(num < room[i - 1][j]){
-                        y += 1;
-                    }else if(num > room[i - 1][j]){
-                        z += 1;
+                int x = 4, small = 0, big = 0;
+                vector<pair<int, int>> num = {
+                    {-1, 0}, {1, 0}, {0, -1}, {0, 1}
+                };
+                for(int k = 0; k < 4; k++){
+                    if(i + num[k].first < 0 || i + num[k].first >= h){
+                        x -= 1;
+                        continue;
+                    }
+                    if(j + num[k].second < 0 || j + num[k].second >= w){
+                        x -= 1;
+                        continue;
+                    }
+                    if(room[i + num[k].first][j + num[k].second] < room[i][j]){
+                        small += 1;
+                    }else if(room[i + num[k].first][j + num[k].second] > room[i][j]){
+                        big += 1;
                     }
                 }
-                if(i + 1 < h){
-                    x += 1;
-                    if(num < room[i + 1][j]){
-                        y += 1;
-                    }else if(num > room[i + 1][j]){
-                        z += 1;
-                    }
-                }
-                if(j - 1 >= 0){
-                    x += 1;
-                    if(num < room[i][j - 1]){
-                        y += 1;
-                    }else if(num > room[i][j - 1]){
-                        z += 1;
-                    }
-                }
-                if(j + 1 < w){
-                    x += 1;
-                    if(num < room[i][j + 1]){
-                        y += 1;
-                    }else if(num > room[i][j + 1]){
-                        z += 1;
-                    }
-                }
-                if(x / 2 < y){
-                    tomorrow[i][j] = 1;
-                }else if(x / 2 < z){
-                    tomorrow[i][j] = -1;
+                x = x / 2;
+                if(small > x){
+                    ans -= 1;
+                    temp[i][j] -= 1;
+                }else if(big > x){
+                    ans += 1;
+                    temp[i][j] += 1;
                 }
             }
-        }
-        for(int i = 0; i < h; i++){
-            for(int j = 0; j < w; j++){
-                room[i][j] += tomorrow[i][j];
-            }
+            room = temp;
         }
     }
-    int new_total = 0;
-    for(int i = 0; i < h; i++){
-        for(int j = 0; j < w; j++){
-            new_total += room[i][j];
-        }
-    }
-    cout << new_total - old_total << '\n';
+    cout << ans << '\n';
     return 0;
 }

@@ -7,5 +7,9 @@
     "[cpp]":{
         "files.encoding": "cp950",
         "files.autoGuessEncoding": false
+    },
+    "files.associations": {
+        "iostream": "cpp",
+        "string": "cpp"
     }
 }
