@@ -10,6 +10,7 @@
     },
     "files.associations": {
         "iostream": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "xiosbase": "cpp"
     }
 }
