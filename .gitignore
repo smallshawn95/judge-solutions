@@ -1,2 +1,5 @@
+# linux system
+*.out
+
 # windows system
 *.exe
