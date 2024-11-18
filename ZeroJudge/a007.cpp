@@ -35,9 +35,9 @@ int main()
             }
         }
         if(factor){
-            cout << "½è¼Æ\n";
+            cout << "è³ªæ•¸\n";
         }else{
-            cout << "«D½è¼Æ\n"; 
+            cout << "éžè³ªæ•¸\n"; 
         }
     }
     return 0;

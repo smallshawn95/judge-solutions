@@ -6,9 +6,9 @@ int main()
     int year;
     while (cin >> year){
         if (year % 4 == 0 & year % 100 != 0 || year % 400 == 0)
-            cout << "¶|¦~" << endl;
+            cout << "é–å¹´" << endl;
         else
-            cout << "¥­¦~" << endl;
+            cout << "å¹³å¹´" << endl;
     }
     return 0;
 }
