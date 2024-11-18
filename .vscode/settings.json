@@ -1,0 +1,6 @@
+{
+    "explorer.sortOrder": "type",
+    "files.autoSave": "onFocusChange",
+    "files.encoding": "utf8",
+    "files.insertFinalNewline": true
+}
